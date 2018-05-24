@@ -1,0 +1,109 @@
+
+
+body{
+  background-color: white;
+}
+
+.warning {
+  color: orange;
+  font-weight: bold;
+}
+
+.danger {
+  color: crimson;
+  font-weight: bold;
+}
+
+.total {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+
+
+
+
+
+
+h1{
+  text-align: center;
+}
+
+P{
+  width: 80%;
+}
+
+form{
+  padding: 0;
+  margin: 0;
+}
+
+label{
+  display: block;
+  float: left;
+  font-size: 1.4rem;
+  width: 20%;
+
+}
+
+input[type='radio']{
+ display: inline;
+
+}
+
+
+
+form input[type="text"] {
+  width: 70%;
+  padding: 12px 8px;
+  margin-bottom: 10px;
+  border: none;
+  font-size: 14px;
+  color: blue;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+ .SettingsAdd{
+   display: block;
+   float: left;
+  width: 40%;
+  background-color: blue;
+  color: white;
+  padding: 12px 12px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.billAdd{
+display: block;
+ float: left;
+ width:40%;
+ background-color: blue;
+ color: white;
+ padding: 12px 12px;
+ margin: 8px 0;
+ border: none;
+ cursor: pointer;
+}
+.box {
+  padding: 0.75em;
+  border-radius : 0.5em;
+  border : 1px solid #ddd;
+  height: auto;
+  margin-bottom: 1em;
+}
+
+.radioInput{
+  display: inline-block;
+  float: left;
+  width: 60%;
+  overflow: hidden;
+}
+
+
+.display{
+  float: left;
+  width: 80%;
+}

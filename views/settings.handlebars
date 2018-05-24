@@ -1,0 +1,56 @@
+     <div class="row">
+    <div class="col-12">
+      <h1>Bill With Settings</h1>
+       <h5>Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.
+        Calls costs should now be configurable using the settings section.</h5>
+      <h5>If the total cost exceed the warning level show the total cost in orange,
+         if it exceeds the critical level show it in red and prevent any new costs from being added.
+         The warning and critical level should both be configurable now.</h5>
+    </div>
+        </div>
+    <hr>
+
+  <div class="row">
+    <div class="col-6">
+
+        <form class="" action="/calculate" method="post">
+          <div class="radioInput">
+            <label for="">SMS<input type="radio" name="billtype" value="sms"></label>
+            <label for="">Call<input type="radio" name="billtype" value="call"></label>
+            <input type="submit" value="Add" class="billAdd" >
+          </div>
+
+      <div class="display">
+        <!-- <h5>Totals</h5> -->
+            <table>
+              <tr>
+                <td>Call total</td>
+                <td>R<span class="callTotalSettings">{{displayTotal.call}}</span> </td>
+              </tr>
+              <tr>
+                <td>SMS total</td>
+                <td>R<span class="smsTotalSettings">{{displayTotal.sms}}</span> </td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td> R<span class="totalSettings {{displayTotal.totalAlert}}">{{displayTotal.total}}</span> </td>
+              </tr>
+            </table>
+      </div>
+        </form>
+
+
+
+    </div>
+
+   <div class="col-6">
+       <form class="" action="/settings" method="post">
+           <input type="text" name="smsCost" placeholder="enter sms cost">
+           <input type="text" name="callCost" placeholder="enter call cost">
+           <input type="text" name="warning" placeholder="enter warning level">
+           <input type="text" name="critical" placeholder="enter critical level">
+           <input type="submit" class="SettingsAdd">
+       </form>
+     </div>
+
+  </div>
