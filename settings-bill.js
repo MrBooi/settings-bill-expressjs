@@ -81,10 +81,10 @@ var billlRecords=[];
   var Calculate = function(billtext) {
    let bill = {
     type: billtext,
-    timestamp: moment.startOf('now').fromNow()
+    timestamp: new Date()
 
    }
-   
+  //  moment.startOf('now').fromNow()
     if (billtext === 'sms') {
       totalSms += smsCost;
       bill.cost = smsCost
@@ -93,7 +93,7 @@ var billlRecords=[];
       bill.cost= callCost
     }
       total = totalSms+totalSms;
-    billlRecords.push(bill);
+    billlRecords.unshift(bill);
  
   }
 

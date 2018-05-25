@@ -1,10 +1,10 @@
- "use strict";
+//  "use strict";
  const express = require('express');
  const exphbs = require('express-handlebars');
  const bodyParser = require('body-parser');
  var UpdateBillWithSettings = require('./settings-bill');
  const Moment =require('moment');
-  var moment = Moment();
+  // var moment = Moment();
  const app = express();
  // lsof -i :3000
  var PORT = process.env.PORT || 3000;
@@ -17,9 +17,20 @@
  app.use(bodyParser.json());
 
  app.engine('handlebars', exphbs({
-   defaultLayout: 'main'
+   defaultLayout: 'main',
+   helpers:{
+    "momentDate":function(){
+      
+      return Moment(this.timestamp).fromNow()
+    }
+
+   }
  }));
+
+
+
  app.set('view engine', 'handlebars');
+
 
  app.get("/", function(req, res) {
    var displayTotal = {
@@ -34,15 +45,19 @@
    });
  });
 
- app.get('/actions/calls',function(req,res) {
+ app.get('/actions/:type',function(req,res) {
+   if(req.params.type==='calls'){
   var billRecords = {bill:billsettings.callRecords()}
      res.render('Records',billRecords);
+   }
  });
 
- app.get('/actions/sms',function(req,res) {
-  var billRecords = {bill:billsettings.smsRecords()}
-  
-     res.render('Records',billRecords);
+ app.get('/actions/:type',function(req,res) {
+   if (req.params.type==='sms') {
+    var billRecords = {bill:billsettings.smsRecords()}
+    res.render('Records',billRecords);
+   }
+
  });
 
   app.get('/actions',function(req,res) {
