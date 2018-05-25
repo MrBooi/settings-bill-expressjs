@@ -1,4 +1,5 @@
-
+ const Moment =require('moment');
+    var moment = Moment();
 module.exports=function () {
   var smsCost = 0;
   var callCost = 0;
@@ -7,6 +8,7 @@ module.exports=function () {
   var warning = 0;
   var danger = 0;
   var total = 0;
+var billlRecords=[];
   // setters
   var setCallCost = function(value) {
       callCost = parseFloat(value);
@@ -71,18 +73,43 @@ module.exports=function () {
         colorRemove = "WarnDanger";
 
       }
-      console.log(colorRemove);
+
       return colorRemove;
     }
 
   // Radio button clicked
   var Calculate = function(billtext) {
+   let bill = {
+    type: billtext,
+    timestamp: moment.startOf('now').fromNow()
+
+   }
+   
     if (billtext === 'sms') {
       totalSms += smsCost;
+      bill.cost = smsCost
     } else if (billtext === 'call') {
       totalCall += callCost;
+      bill.cost= callCost
     }
+      total = totalSms+totalSms;
+    billlRecords.push(bill);
+ 
   }
+
+
+var callHistory =function() {
+  return  billlRecords.filter(bill =>bill.type==='call');
+}
+
+var smsHistory =function(){
+  return billlRecords.filter(bill =>bill.type==='sms');
+}
+
+var totalHistory =function() {
+  return billlRecords;
+}
+
 
   return {
     calc: Calculate,
@@ -96,6 +123,10 @@ module.exports=function () {
     getWarning: getWarningLevel,
     getCritical: getCriticalLevel,
     check: changeColor,
-    removecolor : removeColor
+    removecolor : removeColor,
+    smsRecords:smsHistory,
+    callRecords:callHistory,
+    totalRecord:totalHistory
+
   }
 }

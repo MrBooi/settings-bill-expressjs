@@ -3,11 +3,10 @@
  const exphbs = require('express-handlebars');
  const bodyParser = require('body-parser');
  var UpdateBillWithSettings = require('./settings-bill');
-
+ const Moment =require('moment');
+  var moment = Moment();
  const app = express();
-
  // lsof -i :3000
-
  var PORT = process.env.PORT || 3000;
 
  app.use(express.static('public'));
@@ -16,7 +15,6 @@
    extended: false
  }));
  app.use(bodyParser.json());
-
 
  app.engine('handlebars', exphbs({
    defaultLayout: 'main'
@@ -30,10 +28,30 @@
      total: billsettings.total(),
      totalAlert: billsettings.check()
    }
+     console.log(new Date())
    res.render("settings", {
      displayTotal
    });
  });
+
+ app.get('/actions/calls',function(req,res) {
+  var billRecords = {bill:billsettings.callRecords()}
+     res.render('Records',billRecords);
+ });
+
+ app.get('/actions/sms',function(req,res) {
+  var billRecords = {bill:billsettings.smsRecords()}
+  
+     res.render('Records',billRecords);
+ });
+
+  app.get('/actions',function(req,res) {
+    var billRecords = {bill:billsettings.totalRecord()}
+   
+       res.render('Records',billRecords);
+   });
+
+
 
  app.post("/calculate", function(req, res) {
    var billType = req.body.billtype;

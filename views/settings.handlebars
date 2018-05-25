@@ -1,56 +1,70 @@
-     <div class="row">
-    <div class="col-12">
-      <h1>Bill With Settings</h1>
-       <h5>Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.
-        Calls costs should now be configurable using the settings section.</h5>
-      <h5>If the total cost exceed the warning level show the total cost in orange,
-         if it exceeds the critical level show it in red and prevent any new costs from being added.
-         The warning and critical level should both be configurable now.</h5>
-    </div>
-        </div>
-    <hr>
 
-  <div class="row">
-    <div class="col-6">
-
-        <form class="" action="/calculate" method="post">
-          <div class="radioInput">
-            <label for="">SMS<input type="radio" name="billtype" value="sms"></label>
-            <label for="">Call<input type="radio" name="billtype" value="call"></label>
-            <input type="submit" value="Add" class="billAdd" >
+    <div class="container">
+      <div class="row">
+        <div class="twelve columns box">
+          <h3>Bill with settings</h3>
+          <div class="">
+            Select the call or sms radio button. Update the appropriate total and the overall total when the ADD button in pressed.
+            <i>Calls costs should now be configurable using the settings section.</i>
           </div>
+          <div class="">
+            <i>If the total cost exceed the warning level show the total cost in orange, if it exceeds the critical level show it in red and prevent any new costs from being added. The  warning and critical level should both be configurable now.</i>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="six columns">
+              <h5>Bill type</h5>
+             <form class="" action="/calculate" method="post">
+              <label class="">
+                <input type="radio" name="billtype" value="call" class="billItemTypeWithSettings">
+                <span class="label-body">Call</span>
+              </label>
+              <label class="">
+                <input type="radio" name="billtype"value="sms" class="billItemTypeWithSettings">
+                <span class="label-body" >SMS</span>
+              </label>
+              <button class="button-primary" type="submit" name="button">Add</button>
 
-      <div class="display">
-        <!-- <h5>Totals</h5> -->
-            <table>
-              <tr>
-                <td>Call total</td>
-                <td>R<span class="callTotalSettings">{{displayTotal.call}}</span> </td>
-              </tr>
-              <tr>
-                <td>SMS total</td>
-                <td>R<span class="smsTotalSettings">{{displayTotal.sms}}</span> </td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td> R<span class="totalSettings {{displayTotal.totalAlert}}">{{displayTotal.total}}</span> </td>
-              </tr>
-            </table>
-      </div>
-        </form>
+              <h5>Totals</h5>
+                  <table>
+                    <tr>
+                      <td>
+                        <a href="/actions/calls">Call total</a>
+                      </td>
+                      <td>R<span class="callTotalSettings">{{displayTotal.call}}</span> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="/actions/sms">SMS total</a>
+                      </td>
+                      <td>R<span class="smsTotalSettings">{{displayTotal.sms}}</span> </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="/actions">Total</a>
+                      </td>
+                  <td> R<span class="totalSettings {{displayTotal.totalAlert}}">{{displayTotal.total}}</span> </td>
+                    </tr>
+                  </table>
+                 </form>
 
-
-
-    </div>
-
-   <div class="col-6">
-       <form class="" action="/settings" method="post">
-           <input type="text" name="smsCost" placeholder="enter sms cost">
-           <input type="text" name="callCost" placeholder="enter call cost">
-           <input type="text" name="warning" placeholder="enter warning level">
-           <input type="text" name="critical" placeholder="enter critical level">
-           <input type="submit" class="SettingsAdd">
-       </form>
-     </div>
-
-  </div>
+            </div>
+     
+            <div class="six columns">
+              <h5>Settings</h5>
+            <form class="" action="/settings" method="post">
+              <label for="exampleEmailInput">Call cost</label>
+              <input class="u-full-width callCostSetting" name='callCost' type="number"placeholder="eg.2.55">
+              <label for="exampleEmailInput">SMS cost</label>
+              <input class="u-full-width smsCostSetting" type="number"name='smsCost' placeholder="eg. 0.65" >
+              <label for="">Warning level</label>
+              <input class="u-full-width warningLevelSetting " name="warning"  type="number" placeholder="eg. 30.00" class="warningLevel" >
+              <label for="">Critical level</label>
+              <input class="u-full-width criticalLevelSetting"  name="critical" type="number" placeholder="eg. 65.00" >
+              <button class="button-primary updateSettings" type="submit" name="button">Update settings</button>
+               </form>
+            </div>
+          </div>
+        </div>
+ 
+  
