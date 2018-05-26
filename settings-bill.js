@@ -50,6 +50,7 @@ var billlRecords=[];
 
   var changeColor = function() {
     var Color = "";
+   
     if (total >= warning && total < danger) {
        // totalSettingsElem.classList.remove("danger");
       Color = "warning";
@@ -79,12 +80,12 @@ var billlRecords=[];
 
   // Radio button clicked
   var Calculate = function(billtext) {
-   let bill = {
-    type: billtext,
-    timestamp: new Date()
-
-   }
-  //  moment.startOf('now').fromNow()
+  if(billtext === 'call'|| billtext==='sms'){
+    let bill = {
+      type: billtext,
+      timestamp: new Date()
+  
+     }
     if (billtext === 'sms') {
       totalSms += smsCost;
       bill.cost = smsCost
@@ -96,6 +97,7 @@ var billlRecords=[];
     billlRecords.unshift(bill);
  
   }
+}
 
 
 var callHistory =function() {

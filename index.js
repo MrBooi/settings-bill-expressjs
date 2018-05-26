@@ -1,4 +1,4 @@
-//  "use strict";
+
  const express = require('express');
  const exphbs = require('express-handlebars');
  const bodyParser = require('body-parser');
@@ -9,7 +9,7 @@
  // lsof -i :3000
  var PORT = process.env.PORT || 3000;
 
- app.use(express.static('public'));
+ app.use(express.static(__dirname+'/public/'));
  const billsettings = UpdateBillWithSettings();
  app.use(bodyParser.urlencoded({
    extended: false
@@ -27,10 +27,7 @@
    }
  }));
 
-
-
  app.set('view engine', 'handlebars');
-
 
  app.get("/", function(req, res) {
    var displayTotal = {
@@ -44,28 +41,23 @@
      displayTotal
    });
  });
-
- app.get('/actions/:type',function(req,res) {
-   if(req.params.type==='calls'){
-  var billRecords = {bill:billsettings.callRecords()}
+  
+ app.get('/actions',function(req,res) {
+  var billRecords = {bill:billsettings.totalRecord()}
      res.render('Records',billRecords);
-   }
  });
-
  app.get('/actions/:type',function(req,res) {
-   if (req.params.type==='sms') {
-    var billRecords = {bill:billsettings.smsRecords()}
+
+   if(req.params.type=='call'){
+  let billRecords = {bill:billsettings.callRecords()}
+     res.render('Records',billRecords);
+   } 
+   else if(req.params.type=='sms'){
+    let billRecords = {bill:billsettings.smsRecords()}
     res.render('Records',billRecords);
    }
-
- });
-
-  app.get('/actions',function(req,res) {
-    var billRecords = {bill:billsettings.totalRecord()}
    
-       res.render('Records',billRecords);
-   });
-
+ });
 
 
  app.post("/calculate", function(req, res) {
@@ -77,8 +69,8 @@
      sms: billsettings.smsTotal(),
      total: billsettings.total(),
      totalAlert: billsettings.check()
-   }
-
+   }   
+    
    res.render("settings", {
      displayTotal
    })
