@@ -11,16 +11,19 @@ module.exports=function () {
 var billlRecords=[];
   // setters
   var setCallCost = function(value) {
+    if(value !==""){
       callCost = parseFloat(value);
-
+    }
   }
   var setSmsCost = function(value) {
-    smsCost = parseFloat(value);
-
+    if(value !==""){
+      smsCost = parseFloat(value);
+    }
   }
   var setWarningLevel = function(value) {
-    warning = parseFloat(value);
-
+    if(value !==""){
+      warning = parseFloat(value);
+    }
   }
   var setCriticalLevel = function(value) {
     danger = parseFloat(value);
