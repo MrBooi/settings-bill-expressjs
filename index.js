@@ -39,7 +39,7 @@
      displayTotal
    });
  });
-  
+
  app.get('/actions',function(req,res) {
   var billRecords = {bill:billsettings.totalRecord()}
      res.render('Records',billRecords);
@@ -49,12 +49,12 @@
    if(req.params.type=='call'){
   let billRecords = {bill:billsettings.callRecords()}
      res.render('Records',billRecords);
-   } 
+   }
    else if(req.params.type=='sms'){
     let billRecords = {bill:billsettings.smsRecords()}
     res.render('Records',billRecords);
    }
-   
+
  });
 
 
@@ -67,8 +67,8 @@
      sms: billsettings.smsTotal(),
      total: billsettings.total(),
      totalAlert: billsettings.check()
-   }   
-    
+   }
+
    res.render("settings", {
      displayTotal
    })
@@ -95,7 +95,7 @@
   sms: billsettings.smsTotal(),
   total: billsettings.total(),
   totalAlert: billsettings.check()
-} 
+}
   // res.render('settings',displayTotal);
   res.redirect('/');
  })
