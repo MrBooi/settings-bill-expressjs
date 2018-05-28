@@ -115,6 +115,13 @@ var totalHistory =function() {
   return billlRecords;
 }
 
+   function refresh(){
+    billlRecords=[];
+    totalCall = 0;
+     totalSms = 0;
+     total = 0;
+   }
+
 
   return {
     calc: Calculate,
@@ -131,7 +138,8 @@ var totalHistory =function() {
     removecolor : removeColor,
     smsRecords:smsHistory,
     callRecords:callHistory,
-    totalRecord:totalHistory
+    totalRecord:totalHistory,
+    clearHistory :refresh
 
   }
 }

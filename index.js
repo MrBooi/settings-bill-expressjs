@@ -20,10 +20,8 @@
    defaultLayout: 'main',
    helpers:{
     "momentDate":function(){
-      
       return Moment(this.timestamp).fromNow()
     }
-
    }
  }));
 
@@ -89,6 +87,18 @@
 
    res.redirect('/');
  });
+
+ app.get('/refresh',function(req,res){
+  billsettings.clearHistory();
+  var displayTotal = {
+  call: billsettings.callTotal(),
+  sms: billsettings.smsTotal(),
+  total: billsettings.total(),
+  totalAlert: billsettings.check()
+} 
+  // res.render('settings',displayTotal);
+  res.redirect('/');
+ })
 
 
  app.listen(PORT, function() {

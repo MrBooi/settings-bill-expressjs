@@ -35,3 +35,9 @@ th, td {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+
+.refresh{
+
+  background-color: rgb(51, 195, 240);
+  color: white;
+}
