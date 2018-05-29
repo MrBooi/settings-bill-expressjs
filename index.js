@@ -109,7 +109,7 @@
   total: billsettings.total(),
   totalAlert: billsettings.check()
 }
-  // res.render('settings',displayTotal);
+ 
   res.redirect('/');
  })
 

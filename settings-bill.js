@@ -17,11 +17,11 @@ var billlRecords=[];
     }
   }
   function getcallCost(){
-      return callCost;
+      return callCost.toFixed(2);
   }
 
   function getsmsCost(){
-    return callCost;
+    return callCost.toFixed(2);
 }
 
   var setSmsCost = function(value) {
@@ -62,7 +62,7 @@ var billlRecords=[];
 
   var changeColor = function() {
     var Color = "";
-    if (total >= warning && total < danger) {
+    if (total > warning && total < danger) {
       Color = "warning"; 
     } 
      if (  total >danger) {
