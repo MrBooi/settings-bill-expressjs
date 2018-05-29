@@ -34,9 +34,18 @@
      total: billsettings.total(),
      totalAlert: billsettings.check()
    }
+
+   var returnValue={
+    costcall :billsettings.getcostCall(),
+    costsms :billsettings.getcostSms(),
+    warning  :billsettings.getWarning(),
+  critical   : billsettings.getCritical()
+   }
+
+
      console.log(new Date())
    res.render("settings", {
-     displayTotal
+     displayTotal, returnValue
    });
  });
 
@@ -69,9 +78,14 @@
      totalAlert: billsettings.check()
    }
 
-   res.render("settings", {
-     displayTotal
-   })
+   var returnValue={
+    costcall :billsettings.getcostCall(),
+    costsms :billsettings.getcostSms(),
+    warning  :billsettings.getWarning(),
+  critical   : billsettings.getCritical()
+   }
+
+   res.render("settings", {  displayTotal,returnValue })
  });
 
  app.post('/settings', function(req, res) {

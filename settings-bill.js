@@ -15,6 +15,16 @@ var billlRecords=[];
       callCost = parseFloat(value);
     }
   }
+
+  function getcallCost(){
+      return callCost;
+  }
+
+  function getsmsCost(){
+    return callCost;
+}
+
+
   var setSmsCost = function(value) {
     if(value !==""){
       smsCost = parseFloat(value);
@@ -53,7 +63,6 @@ var billlRecords=[];
 
   var changeColor = function() {
     var Color = "";
-   
     if (total >= warning && total < danger) {
        // totalSettingsElem.classList.remove("danger");
       Color = "warning";
@@ -135,7 +144,8 @@ var totalHistory =function() {
     getWarning: getWarningLevel,
     getCritical: getCriticalLevel,
     check: changeColor,
-    removecolor : removeColor,
+     getcostSms :getsmsCost,
+     getcostCall : getcallCost,
     smsRecords:smsHistory,
     callRecords:callHistory,
     totalRecord:totalHistory,
