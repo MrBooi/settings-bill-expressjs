@@ -1,10 +1,9 @@
-
  const express = require('express');
  const exphbs = require('express-handlebars');
  const bodyParser = require('body-parser');
  var UpdateBillWithSettings = require('./settings-bill');
  const Moment =require('moment');
-  // var moment = Moment();
+
  const app = express();
  // lsof -i :3000
  var PORT = process.env.PORT || 3000;

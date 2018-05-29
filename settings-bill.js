@@ -7,15 +7,15 @@ module.exports=function () {
   var totalSms = 0;
   var warning = 0;
   var danger = 0;
-  var total = 0;
+  var total = 0; 
 var billlRecords=[];
+
   // setters
   var setCallCost = function(value) {
     if(value !==""){
       callCost = parseFloat(value);
     }
   }
-
   function getcallCost(){
       return callCost;
   }
@@ -23,7 +23,6 @@ var billlRecords=[];
   function getsmsCost(){
     return callCost;
 }
-
 
   var setSmsCost = function(value) {
     if(value !==""){
@@ -64,35 +63,19 @@ var billlRecords=[];
   var changeColor = function() {
     var Color = "";
     if (total >= warning && total < danger) {
-       // totalSettingsElem.classList.remove("danger");
-      Color = "warning";
-
-    } else if (total > danger) {
-
+      Color = "warning"; 
+    } 
+     if (  total >danger) {
       Color = "danger";
     }
     return Color;
   }
-    var removeColor = function(){
-      var colorRemove = "";
-
-      if(total<warning){
-        colorRemove ="removeWarning";
-      }
-       else if (total <danger ) {
-        colorRemove  = "removeDanger";
-      }
-      if(total <warning && total< danger){
-        colorRemove = "WarnDanger";
-
-      }
-
-      return colorRemove;
-    }
+ 
 
   // Radio button clicked
   var Calculate = function(billtext) {
-  if(billtext === 'call'|| billtext==='sms'){
+  if(billtext === 'call'|| billtext==='sms' && smsCost>0 && callCost>0){
+    if(danger > total){
     let bill = {
       type: billtext,
       timestamp: new Date()
@@ -109,6 +92,7 @@ var billlRecords=[];
     billlRecords.unshift(bill);
  
   }
+}
 }
 
 
