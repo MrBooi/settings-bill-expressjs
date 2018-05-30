@@ -60,19 +60,6 @@ var billlRecords=[];
     return total;
   }
 
-  var changeColor = function() {
-  
-    if ( total > danger && total !=0) {
-      return"danger";
-   }
-
-   else if (total > warning) {
-    return "warning"; 
-    } 
- 
-   
-  }
- 
 
   // Radio button clicked
   var Calculate = function(billtext) {
@@ -92,14 +79,25 @@ var billlRecords=[];
       totalCall += callCost;
       bill.cost= callCost
     }
-      total = totalSms+totalSms;
+      // total = totalSms+totalSms;
     billlRecords.unshift(bill);
  
   
 }
 }
 
+var changeColor = function() {
+  
+  if ( total > danger && total !=0) {
+    return"danger";
+ }
 
+ else if (total > warning) {
+  return "warning"; 
+  } 
+
+ 
+}
 var callHistory =function() {
   return  billlRecords.filter(bill =>bill.type==='call');
 }
