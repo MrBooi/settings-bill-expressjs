@@ -61,13 +61,15 @@ var billlRecords=[];
   }
 
   var changeColor = function() {
- 
-    if (total > warning && total < danger) {
+  
+    if ( total > danger && total !=0) {
+      return"danger";
+   }
+
+   else if (total > warning) {
     return "warning"; 
     } 
-    else if ( total >danger) {
-     return"danger";
-   }
+ 
    
   }
  
@@ -75,7 +77,9 @@ var billlRecords=[];
   // Radio button clicked
   var Calculate = function(billtext) {
   if(billtext === 'call'|| billtext==='sms' && smsCost>0 && callCost>0){
-    if(danger > total){
+    if(total > danger ){
+     return;
+    }
     let bill = {
       type: billtext,
       timestamp: new Date()
@@ -91,7 +95,7 @@ var billlRecords=[];
       total = totalSms+totalSms;
     billlRecords.unshift(bill);
  
-  }
+  
 }
 }
 
